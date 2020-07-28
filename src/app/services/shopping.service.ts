@@ -6,6 +6,7 @@ import { MessageService } from './message.service';
 import { Item } from '../../model/Item';
 
 import { StorageService } from './storage.service'
+import { environment } from 'src/environments/environment';
 
 
 @Injectable({
@@ -16,7 +17,10 @@ export class ShoppingService {
   constructor(
     private http: HttpClient, private messageService: MessageService, private storageService: StorageService
   ) { }
-  private baseUrl = 'http://localhost:4000';  // URL to web api
+
+
+
+  private baseUrl = (environment.production) ? '/api' : '//localhost:4000/api';
 
   getItems(): Observable<Item[]> {
     return this.http.get<Item[]>(`${this.baseUrl}/products`).pipe(
