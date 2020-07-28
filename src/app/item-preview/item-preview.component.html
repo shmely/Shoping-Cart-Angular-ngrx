@@ -1,0 +1,13 @@
+<section class="card flex column">
+    <img src={{item.image}} alt={{item.title}} onerror="this.onerror=null;this.src='https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQ_icZBM5s9kG-1XQJ9mYa5w61YBVAEHhQSpQ&usqp=CAU';">
+    <h1>{{item.title}}</h1>
+    <h2 class="grow">{{item.price}}$</h2>
+    <div class="actions">
+        <button class="product-actions__add" (click)="addToCart(item)" *ngIf="!inCart()">
+            <img src="/assets/images/add-to-cart.png" alt="add to cart" />
+        </button>
+        <button class="product-actions__remove" (click)="removeFromCart(item)" *ngIf="inCart()">
+            <img src="/assets/images/remove-from-cart.png" alt="remove from cart" />
+        </button>
+    </div>
+</section>
